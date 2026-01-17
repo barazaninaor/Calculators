@@ -105,6 +105,15 @@ function copyValue(elementId, btn) {
 }
 
 function resetAll() {
-    document.querySelectorAll("input").forEach(i => i.value = "");
-    document.querySelectorAll(".results div").forEach(r => r.innerText = "-");
+    const selectedType = document.getElementById("calculatorType").value;
+    localStorage.setItem("calculatorType", selectedType);
+    location.reload();
 }
+
+window.addEventListener("load", () => {
+    const savedType = localStorage.getItem("calculatorType");
+    if (savedType) {
+        document.getElementById("calculatorType").value = savedType;
+        toggleCalculator();
+    }
+});
