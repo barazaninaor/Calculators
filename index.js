@@ -2,6 +2,10 @@ function toggleCalculator() {
     const type = document.getElementById("calculatorType").value;
     document.getElementById("valueCalc").style.display = type === "value" ? "block" : "none";
     document.getElementById("yieldCalc").style.display = type === "yield" ? "block" : "none";
+
+    // 👇 תוספת יחידה
+    document.getElementById("pageTitle").innerText =
+        type === "value" ? "Value Calculator" : "Yield Calculator";
 }
 
 function formatValue(input) {
@@ -84,7 +88,6 @@ function copyToYield() {
     if (newVal !== "-") document.getElementById("currBal").value = newVal;
 }
 
-// ===== COPY BUTTON =====
 function copyValue(elementId, btn) {
     const text = document.getElementById(elementId).innerText;
     if (!text || text === "-") return;
